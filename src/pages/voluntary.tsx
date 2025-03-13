@@ -191,7 +191,6 @@ export default function Voluntary() {
             )}
           </label>
 
-          {/* Cover Letter Upload */}
           <label className="block">
             Cover Letter (PDF, DOCX) - Optional:
             <div className="flex items-center mt-1">
@@ -206,7 +205,8 @@ export default function Voluntary() {
               </label>
               <span className="ml-2 text-sm text-gray-600">
                 {coverLetterFileName}
-              </span>
+              </span>{" "}
+              {/* ✅ 이 부분 유지 */}
             </div>
           </label>
 

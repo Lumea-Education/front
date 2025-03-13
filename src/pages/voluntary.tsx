@@ -50,8 +50,6 @@ export default function Voluntary() {
 
   const [resumeFileName, setResumeFileName] =
     useState<string>("No file chosen");
-  const [coverLetterFileName, setCoverLetterFileName] =
-    useState<string>("No file chosen");
 
   const jobData = positionData.default;
 
@@ -78,7 +76,6 @@ export default function Voluntary() {
       setResumeFileName(files[0].name);
       setValue("resume", files);
     } else {
-      setCoverLetterFileName(files[0].name);
       setValue("coverLetter", files);
     }
   };
@@ -189,25 +186,6 @@ export default function Voluntary() {
             {errors.resume && (
               <p className="text-red-500 text-sm">{errors.resume.message}</p>
             )}
-          </label>
-
-          <label className="block">
-            Cover Letter (PDF, DOCX) - Optional:
-            <div className="flex items-center mt-1">
-              <label className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded cursor-pointer">
-                Upload Cover Letter
-                <input
-                  type="file"
-                  accept=".pdf,.doc,.docx"
-                  onChange={(e) => handleFileChange(e, "coverLetter")}
-                  className="hidden"
-                />
-              </label>
-              <span className="ml-2 text-sm text-gray-600">
-                {coverLetterFileName}
-              </span>{" "}
-              {/* ✅ 이 부분 유지 */}
-            </div>
           </label>
 
           <button

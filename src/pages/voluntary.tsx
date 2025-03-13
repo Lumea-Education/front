@@ -191,6 +191,25 @@ export default function Voluntary() {
             )}
           </label>
 
+          {/* Cover Letter Upload */}
+          <label className="block">
+            Cover Letter (PDF, DOCX) - Optional:
+            <div className="flex items-center mt-1">
+              <label className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded cursor-pointer">
+                Upload Cover Letter
+                <input
+                  type="file"
+                  accept=".pdf,.doc,.docx"
+                  onChange={(e) => handleFileChange(e, "coverLetter")}
+                  className="hidden"
+                />
+              </label>
+              <span className="ml-2 text-sm text-gray-600">
+                {coverLetterFileName}
+              </span>
+            </div>
+          </label>
+
           <button
             type="submit"
             className="bg-green-600 text-white p-2 rounded w-full mt-4"

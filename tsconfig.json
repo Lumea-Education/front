@@ -5,6 +5,7 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-    "jsx": "react-jsx" // 또는 "react" (React 17 이하)
+    "jsx": "react-jsx",
+    "skipLibCheck": true
   }
 }

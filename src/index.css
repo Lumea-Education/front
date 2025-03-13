@@ -1,0 +1,180 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Comfortaa&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+@import "tailwindcss";
+
+:root {
+  --font-inter: "Inter", sans-serif;
+
+  --font-h1-1: 40px;
+  --font-h1-2: 40px;
+  --font-h2-1: 32px;
+  --font-h2-2: 32px;
+  --font-h2-bold-1: 32px;
+  --font-h3-bold-1: 24px;
+  --font-h3-bold-2: 24px;
+  --font-h3-reg-1: 24px;
+
+  --font-body-bold-1: 20px;
+  --font-body-medium-1: 20px;
+  --font-body-reg-1: 20px;
+  --font-body-regular: 16px;
+
+  background-color: #efefef;
+}
+
+.font-inter {
+  font-family: var(--font-inter);
+}
+
+.text-h1-1 {
+  font-size: var(--font-h1-1);
+  font-weight: normal;
+}
+.text-h1-2 {
+  font-size: var(--font-h1-2);
+  font-weight: normal;
+}
+.text-h2-1 {
+  font-size: var(--font-h2-1);
+  font-weight: normal;
+}
+.text-h2-2 {
+  font-size: var(--font-h2-2);
+  font-weight: normal;
+}
+.text-h2-bold-1 {
+  font-size: var(--font-h2-bold-1);
+  font-weight: bold;
+}
+.text-h3-bold-1 {
+  font-size: var(--font-h3-bold-1);
+  font-weight: bold;
+}
+.text-h3-bold-2 {
+  font-size: var(--font-h3-bold-2);
+  font-weight: bold;
+}
+.text-h3-reg-1 {
+  font-size: var(--font-h3-reg-1);
+  font-weight: normal;
+}
+
+.text-body-bold-1 {
+  font-size: var(--font-body-bold-1);
+  font-weight: bold;
+}
+.text-body-medium-1 {
+  font-size: var(--font-body-medium-1);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.38px;
+}
+.text-body-reg-1 {
+  font-size: var(--font-body-reg-1);
+  font-weight: normal;
+  line-height: 1.5;
+  letter-spacing: -0.38px;
+}
+.text-body-regular {
+  font-size: var(--font-body-regular);
+  font-weight: normal;
+}
+
+:root {
+  --primary-button: #9c8486;
+  --secondary-helper: #845440;
+  --neutral-body: #000;
+  --neutral-highlight: #fff;
+  --neutral-grey: #e9e7e8;
+  --neutral-brown: #e2ccc5;
+  --primary-highlight: #1537c0;
+  --primary-brown: #ffb8a2;
+  --primary-demo: #02f;
+  --primary-submit: #47affe;
+  --neutral-form: #1e1e1e;
+  --neutral-loading: #e4e4e4;
+  --primary-success: #50ad33;
+}
+
+.bg-primary-button {
+  background-color: var(--primary-button);
+}
+.bg-primary-highlight {
+  background-color: var(--primary-highlight);
+}
+.bg-primary-brown {
+  background-color: var(--primary-brown);
+}
+.bg-primary-demo {
+  background-color: var(--primary-demo);
+}
+.bg-primary-submit {
+  background-color: var(--primary-submit);
+}
+.bg-primary-success {
+  background-color: var(--primary-success);
+}
+
+.bg-neutral-body {
+  background-color: var(--neutral-body);
+}
+.bg-neutral-highlight {
+  background-color: var(--neutral-highlight);
+}
+.bg-neutral-grey {
+  background-color: var(--neutral-grey);
+}
+.bg-neutral-brown {
+  background-color: var(--neutral-brown);
+}
+.bg-neutral-form {
+  background-color: var(--neutral-form);
+}
+.bg-neutral-loading {
+  background-color: var(--neutral-loading);
+}
+
+.bg-secondary-helper {
+  background-color: var(--secondary-helper);
+}
+
+.text-primary-button {
+  color: var(--primary-button);
+}
+.text-primary-highlight {
+  color: var(--primary-highlight);
+}
+.text-primary-brown {
+  color: var(--primary-brown);
+}
+.text-primary-demo {
+  color: var(--primary-demo);
+}
+.text-primary-submit {
+  color: var(--primary-submit);
+}
+.text-primary-success {
+  color: var(--primary-success);
+}
+
+.text-neutral-body {
+  color: var(--neutral-body);
+}
+.text-neutral-highlight {
+  color: var(--neutral-highlight);
+}
+.text-neutral-grey {
+  color: var(--neutral-grey);
+}
+.text-neutral-brown {
+  color: var(--neutral-brown);
+}
+.text-neutral-form {
+  color: var(--neutral-form);
+}
+.text-neutral-loading {
+  color: var(--neutral-loading);
+}
+
+.text-secondary-helper {
+  color: var(--secondary-helper);
+}

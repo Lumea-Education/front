@@ -1,0 +1,23 @@
+{
+  "default": {
+    "aboutUs": "We are Lumea Education, an independent EduTech marketplace web application that aims to become an innovative online educational platform dedicated to self-improvement, offering interactive online courses, live video calls, synchronous learning, tutorial videos, and mentorship services.",
+    "jobDescription": "We are seeking a passionate {position} who can play a critical role in building responsive, intuitive, and visually engaging digital experiences across both web and mobile platforms. You will work closely with cross-functional teams including UX researchers, designers, product managers, and other key stakeholders, turning creative design concepts into functional and high-performing code. You will lead the development of user interfaces, mentor junior developers, and ensure the technical feasibility of UX designs.",
+    "keyResponsibilities": [
+      "Lead the development and maintenance of high-quality, responsive user interfaces for web and mobile applications.",
+      "Collaborate with UX designers, researchers, product managers, and cross-functional teams to translate design wireframes and prototypes into functional, production-ready code.",
+      "Ensure that applications are optimized for maximum speed, scalability, and performance.",
+      "Mentor junior developers, fostering a culture of learning, best practices, and continuous improvement.",
+      "Advocate for user-centric design, ensuring technical feasibility of UI/UX designs and contributing to the overall user experience strategy.",
+      "Continuously improve and refine our front-end codebase to meet evolving user and business needs."
+    ],
+    "qualifications": [
+      "Proven experience in front-end technologies and frameworks, such as Next.js, React, TypeScript, Tailwind CSS, Node.js, and Express.",
+      "Strong understanding of responsive design principles and hands-on experience building interfaces for multiple devices.",
+      "Experience with version control systems like Git and familiarity with agile development practices.",
+      "Excellent problem-solving skills and ability to tackle complex technical challenges.",
+      "Strong communication skills and ability to collaborate effectively with both technical and non-technical team members.",
+      "Experience in mentoring or leading a team of developers is a plus."
+    ],
+    "specialNote": "This is currently an unpaid (pro-bono) position as Lumea Education is an independent e-commerce project that is working towards the launch of its first phase MVP. Lumea Education intends to be established as a registered company in near future. Having said that, Lumea Education would like to note that we are planning to offer a form of compensation for your contribution to this project --- such as a contract --- once the circumstances change. In addition, you may receive some sort of reward for your contribution to this project as a volunteer."
+  }
+}

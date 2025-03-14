@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
-import Logo from "../assets/logo.svg"; // Default black logo
-import LogoWhite from "../assets/logo_white.png"; // White logo for careers page
+import Logo from "../assets/logo.svg";
+import LogoWhite from "../assets/logo_white.png";
 
 export default function Navigation() {
   const location = useLocation();
@@ -9,7 +9,6 @@ export default function Navigation() {
   return (
     <div className="flex items-center justify-between pt-5 max-w-[1440px] mx-auto bg-transparent">
       <Link to="/">
-        {/* Conditionally Render the Correct Logo */}
         <img
           src={isCareersPage ? LogoWhite : Logo}
           alt="Logo"

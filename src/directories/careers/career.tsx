@@ -14,7 +14,6 @@ const Career: React.FC<CareerProps> = ({ positions }) => {
       <div className="md:pl-4">
         <h2 className="text-xl font-bold mb-2">Career Positions</h2>
 
-        {/* ✅ positionName이 존재하면 화면에 출력 */}
         {positionName && (
           <p className="text-gray-500 italic">
             Currently viewing: {positionName.replace("-", " ")}
@@ -24,7 +23,6 @@ const Career: React.FC<CareerProps> = ({ positions }) => {
         {positions.length > 0 ? (
           <ul className="space-y-4">
             {positions.map((pos, index) => {
-              // URL-friendly한 직무 이름 생성
               const positionPath = pos.title.toLowerCase().replace(/\s+/g, "-");
 
               return (
@@ -45,7 +43,6 @@ const Career: React.FC<CareerProps> = ({ positions }) => {
                     <p className="text-gray-500 text-sm">
                       <strong>Posted on:</strong> {pos.datePosted}
                     </p>
-                    {/* ✅ Apply 버튼을 클릭하면 직무에 맞는 지원 페이지로 이동 */}
                     <Link
                       to={`/careers/${positionPath}`}
                       state={{ position: pos }}

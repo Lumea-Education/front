@@ -89,13 +89,12 @@ export default function Voluntary() {
       return;
     }
 
-    console.log("Submitting application:", data); // ✅ 이거 추가!
+    console.log("Submitting application:", data);
     navigate("/sending", { state: { data } });
   };
 
   return (
     <div className="max-w-[1440px] mx-auto my-5 md:flex space-y-5 md:space-y-0 px-6 md:px-0">
-      {/* Left Section (70% - Job Description) */}
       <div className="md:w-7/12 md:pr-8 space-y-6">
         <h1 className="text-3xl font-bold mb-6">{formattedPositionName}</h1>
 
@@ -138,7 +137,6 @@ export default function Voluntary() {
         </section>
       </div>
 
-      {/* Right Section (30% - Application Form) */}
       <div className="md:w-5/12 p-6 border rounded-lg shadow-lg bg-white">
         <h2 className="text-xl font-semibold mb-4">
           Volunteer Application Form

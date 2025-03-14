@@ -3,8 +3,6 @@ import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import type { Position } from "../types/types";
 
-// Import the missing position data
-// Assuming the data is stored in a separate file
 import positionData from "../data/positions.json";
 
 interface FormData {
@@ -62,7 +60,6 @@ export default function Position() {
   const resumeFile = watch("resume");
   console.log("✅ Debugging Resume File:", resumeFile);
 
-  // Position-specific additional input fields
   const isDeveloperOrEngineer =
     formattedPositionName.toLowerCase().includes("developer") ||
     formattedPositionName.toLowerCase().includes("engineer");
@@ -76,7 +73,6 @@ export default function Position() {
     formattedPositionName.toLowerCase().includes("human resource") ||
     formattedPositionName.toLowerCase().includes("project manager");
 
-  // Remove "Please choose" option logic
   useEffect(() => {
     if (visaSponsorship !== "Please choose") {
       setValue("visaSponsorship", visaSponsorship);
@@ -86,7 +82,6 @@ export default function Position() {
     }
   }, [visaSponsorship, referral, setValue]);
 
-  // File upload handler
   const handleFileChange = (
     event: React.ChangeEvent<HTMLInputElement>,
     type: "resume" | "coverLetter"
@@ -116,13 +111,11 @@ export default function Position() {
       }
     });
 
-    // ✅ sending.tsx로 데이터 전달
     navigate("/sending", { state: { data } });
   };
 
   return (
     <div className="max-w-[1440px] mx-auto my-5 md:flex space-y-5 md:space-y-0 px-6 md:px-0">
-      {/* Left Section (70% - Job Description) */}
       <div className="md:w-7/12 md:pr-8 space-y-6">
         <h1 className="text-3xl font-bold mb-6">{formattedPositionName}</h1>
 
@@ -165,7 +158,6 @@ export default function Position() {
         </section>
       </div>
 
-      {/* Right Section (30% - Application Form) */}
       <div className="md:w-5/12 p-6 border rounded-lg shadow-lg bg-white">
         <h2 className="text-xl font-semibold mb-4">Application Form</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -243,7 +235,6 @@ export default function Position() {
             </label>
           )}
 
-          {/* Position-specific fields conditional display */}
           {isDeveloperOrEngineer && (
             <label className="block">
               Github Profile:

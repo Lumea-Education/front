@@ -4,7 +4,6 @@ export default function Cover() {
   return (
     <section>
       <div className="flex items-center md:max-w-[1440px] mx-auto px-11 md:px-0">
-        {/* Desktop View (md 이상) */}
         <div
           className="rounded-2xl w-full my-11 space-y-96 md:block hidden"
           style={{
@@ -27,7 +26,6 @@ export default function Cover() {
           </div>
         </div>
 
-        {/* Mobile View (md 이하) */}
         <div className="rounded-2xl w-full my-5 space-y-8 mt-20 md:mt-0 md:hidden block">
           <div className="p-8 rounded-xl text-[#f7f6f6] grid grid-cols-1 text-center space-y-4">
             <h1 className="text-4xl text-primary-highlight">Teach.</h1>
@@ -43,7 +41,6 @@ export default function Cover() {
         </div>
       </div>
 
-      {/* "More Info" Section (Desktop 전용) */}
       <div className="my-6 space-y-3 text-[#f7f6f6] md:block hidden">
         <p className="text-center">More Info</p>
         <FaArrowDown className="mx-auto text-3xl" />

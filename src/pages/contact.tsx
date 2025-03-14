@@ -86,7 +86,6 @@ const Contact = () => {
     setIsSubmitted(true);
     reset();
 
-    // Add form submission logic here
     setTimeout(() => {
       setIsSubmitted(false);
     }, 3000);
@@ -107,7 +106,6 @@ const Contact = () => {
   return (
     <div className="max-w-[1440px] md:my-4 md:mx-auto p-6 px-6 mx-6 bg-[#f7f6f6] rounded-lg shadow-lg">
       <div className="flex flex-col md:flex-row gap-8">
-        {/* Contact Form Section */}
         <div className="flex-1">
           <h2 className="md:text-5xl text-2xl font-bold mb-6 text-secondary-helper text-center">
             Contact Us
@@ -125,7 +123,6 @@ const Contact = () => {
             </div>
           ) : (
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-              {/* Name Input Field */}
               <div>
                 <label className="block text-sm font-medium mb-1 text-gray-700">
                   Name
@@ -145,7 +142,6 @@ const Contact = () => {
                 )}
               </div>
 
-              {/* Email Input Field */}
               <div>
                 <label className="block text-sm font-medium mb-1 text-gray-700">
                   Email Address
@@ -171,7 +167,6 @@ const Contact = () => {
                 )}
               </div>
 
-              {/* Phone Number Input Fields */}
               <div>
                 <label className="block text-sm font-medium mb-1 text-gray-700">
                   Phone Number
@@ -211,7 +206,6 @@ const Contact = () => {
                 )}
               </div>
 
-              {/* Inquiry Type Selection */}
               <div>
                 <label className="block text-sm font-medium mb-1 text-gray-700">
                   Inquiry Type
@@ -238,7 +232,6 @@ const Contact = () => {
                 )}
               </div>
 
-              {/* Inquiry Title */}
               <div>
                 <label className="block text-sm font-medium mb-1 text-gray-700">
                   Inquiry Title
@@ -260,7 +253,6 @@ const Contact = () => {
                 )}
               </div>
 
-              {/* Inquiry Message */}
               <div>
                 <label className="block text-sm font-medium mb-1 text-gray-700">
                   Inquiry Message
@@ -282,7 +274,6 @@ const Contact = () => {
                 )}
               </div>
 
-              {/* Submit Button */}
               <button
                 type="submit"
                 className="w-full px-6 py-3 bg-primary-submit text-white font-medium rounded-md focus:outline-none transition shadow-md"
@@ -293,14 +284,12 @@ const Contact = () => {
           )}
         </div>
 
-        {/* Support Options Section */}
         <div className="md:w-64 flex flex-col">
           <h2 className="text-2xl font-bold mb-6 text-secondary-helper text-center">
             Other Support Options
           </h2>
 
           <div className="space-y-4">
-            {/* Chat Support */}
             <div
               className={`p-4 border rounded-lg cursor-pointer transition-all ${
                 selectedSupport === "chat"
@@ -318,7 +307,6 @@ const Contact = () => {
               </p>
             </div>
 
-            {/* Email Support */}
             <div
               className={`p-4 border rounded-lg cursor-pointer transition-all ${
                 selectedSupport === "email"
@@ -336,7 +324,6 @@ const Contact = () => {
               </p>
             </div>
 
-            {/* Response Time Info */}
             <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
               <div className="flex items-center space-x-2 mb-2">
                 <Clock className="text-gray-500" size={18} />
@@ -349,7 +336,6 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Support Option Details */}
           {selectedSupport === "chat" && (
             <div className="mt-4 p-4 bg-indigo-50 rounded-lg border border-indigo-100">
               <h5 className="font-medium text-indigo-700 mb-2">

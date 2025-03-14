@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-// ✅ 필터 옵션 타입 정의
 type CountryType = "All" | "Canada" | "US" | "Korea";
 type CategoryType =
   | "All"
@@ -9,7 +8,6 @@ type CategoryType =
   | "Technology"
   | "Support Operations";
 
-// ✅ Props 타입 명확히 지정
 interface FilterProps {
   onFilterChange: (country: CountryType, category: CategoryType) => void;
 }
@@ -24,7 +22,6 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
 
   return (
     <div className="w-full md:p-4 py-4 md:border-r border-gray-300 mx-auto">
-      {/* Country Filter */}
       <div className="mb-4">
         <label className="block text-sm font-semibold mb-1">Country</label>
         <select
@@ -39,7 +36,6 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
         </select>
       </div>
 
-      {/* Category Filter */}
       <div>
         <label className="block text-sm font-semibold mb-1">Categories</label>
         <select

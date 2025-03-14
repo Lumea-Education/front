@@ -81,7 +81,6 @@ const CareerRouting: React.FC = () => {
 
   return (
     <div className="md:flex max-w-[1440px] mx-auto">
-      {/* ✅ 필터: width 30% */}
       <div className="md:w-1/4 w-full px-6 md:px-0">
         <Filter
           onFilterChange={(country, category) => {
@@ -91,7 +90,6 @@ const CareerRouting: React.FC = () => {
         />
       </div>
 
-      {/* ✅ 컨텐츠 영역: width 70% */}
       <div className="md:w-3/4 w-full my-10 md:my-0 px-6 md:px-0">
         <Volunteer positions={filteredVolunteerPositions} />
         <Career positions={filteredCareerPositions} />

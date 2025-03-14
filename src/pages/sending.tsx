@@ -25,11 +25,10 @@ export default function Sending() {
       const files: { [key: string]: File } = {};
       const jsonData: { [key: string]: string | null } = {};
 
-      // JSON 데이터와 파일을 분리
       Object.keys(data).forEach((key) => {
         if (fileFields.includes(key) && data[key] instanceof FileList) {
           if (data[key].length > 0) {
-            files[key] = data[key][0]; // ✅ FileList → File 변환
+            files[key] = data[key][0];
           }
         } else {
           jsonData[key] = data[key] as string | null;
@@ -39,7 +38,6 @@ export default function Sending() {
       jsonData.resumePath = "pending_upload";
 
       try {
-        // ✅ 1단계: JSON 데이터 업로드
         console.log("🚀 Sending JSON Data:", JSON.stringify(jsonData, null, 2));
         const response = await fetch(
           `${import.meta.env.VITE_BACKEND_URL}/api/careers`,
@@ -77,7 +75,6 @@ export default function Sending() {
           return;
         }
 
-        // ✅ 2단계: 파일 업로드 (resume, coverLetter, image 존재 시)
         if (Object.keys(files).length > 0) {
           const formData = new FormData();
           Object.keys(files).forEach((key) => {
@@ -108,7 +105,6 @@ export default function Sending() {
           }
         }
 
-        // ✅ 모든 프로세스가 정상적으로 완료되었을 때
         navigate("/received");
       } catch (error) {
         console.error("❌ Error submitting form:", error);

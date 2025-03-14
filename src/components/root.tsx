@@ -45,7 +45,6 @@ function RootComponent(): React.JSX.Element {
         />
       )}
 
-      {/* Conditional Rendering: Desktop vs Mobile */}
       <div>
         {isMobile ? <Mobile /> : <Navigation />}
         <App />
@@ -55,7 +54,6 @@ function RootComponent(): React.JSX.Element {
   );
 }
 
-// ✅ Wrap `RootComponent` inside `BrowserRouter`
 export default function AppWrapper() {
   return (
     <BrowserRouter>

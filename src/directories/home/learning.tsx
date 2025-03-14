@@ -3,17 +3,12 @@ import Learn from "../../assets/student/learning.jpg";
 export default function Learning() {
   return (
     <div className="relative">
-      {/* Background Split - Full Width 적용 */}
       <div className="absolute inset-0 flex flex-col">
-        {/* Top Half - Light Color */}
         <div className="md:h-1/2 h-96 bg-[#e9e7e8] w-full"></div>
-        {/* Bottom Half - Darker Color */}
         <div className="md:h-1/2 h-96 bg-[#e2ccc5] w-full"></div>
       </div>
 
-      {/* Content Grid (크기 유지) */}
       <div className="relative md:grid md:grid-cols-2 md:gap-36 z-10 max-w-[1440px] mx-auto px-6 md:px-0 md:py-56 py-6 space-y-28">
-        {/* Left Side (Image covering both colors) */}
         <div>
           <img
             src={Learn}
@@ -24,7 +19,6 @@ export default function Learning() {
           />
         </div>
 
-        {/* Right Side (Text Content) */}
         <div className="space-y-10 md:space-y-0">
           <div className="h-1/2 flex flex-col items-center justify-center">
             <h3 className="md:text-h3-reg-1 text-neutral-body font-inter text-center text-lg">

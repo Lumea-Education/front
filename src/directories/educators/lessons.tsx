@@ -3,10 +3,8 @@ import Lesson from "../../assets/educator/lesson.png";
 export default function Lessons() {
   return (
     <div className="relative w-full">
-      {/* Background Image */}
       <img src={Lesson} alt="Lesson" className="w-full h-auto object-cover" />
 
-      {/* Text Content Positioned on the Right Middle */}
       <div className="absolute md:right-65 md:top-1/2 md:-translate-y-1/2 bg-white/70 p-5 rounded-lg md:max-w-md space-y-5 px-6 md:px-0">
         <h3 className="text-2xl text-neutral-body font-bold text-center">
           Lessons made easy.

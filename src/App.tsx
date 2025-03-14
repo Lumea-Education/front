@@ -4,7 +4,7 @@ import Home from "./pages/home";
 import Educators from "./pages/educators";
 import Careers from "./pages/careers";
 import Position from "./pages/position";
-import Voluntary from "./pages/voluntary"; // ✅ 봉사 지원 추가
+import Voluntary from "./pages/voluntary";
 import Demo from "./pages/demo";
 import Form from "./pages/form";
 import Contact from "./pages/contact";

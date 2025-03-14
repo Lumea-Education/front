@@ -1,4 +1,4 @@
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import type { Position } from "../types/types";
@@ -35,6 +35,7 @@ const capitalizeWords = (str: string) => {
 export default function Voluntary() {
   const { volunteerName } = useParams();
   const location = useLocation();
+  const navigate = useNavigate();
   const position = location.state?.position as Position | undefined;
   const formattedPositionName = capitalizeWords(
     position?.title || volunteerName?.replace(/-/g, " ") || ""
@@ -85,11 +86,9 @@ export default function Voluntary() {
       alert("Resume is required.");
       return;
     }
-    console.log("Application Submitted:", {
-      position: formattedPositionName,
-      ...data,
-    });
-    alert("Application Submitted!");
+
+    console.log("Submitting application:", data); // ✅ 이거 추가!
+    navigate("/sending", { state: { data } });
   };
 
   return (

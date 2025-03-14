@@ -176,10 +176,10 @@ const Contact = () => {
                 <label className="block text-sm font-medium mb-1 text-gray-700">
                   Phone Number
                 </label>
-                <div className="flex gap-2">
+                <div className="md:flex md:gap-2 space-y-5">
                   <select
                     {...register("country", { required: true })}
-                    className="w-1/3 px-4 py-2 border rounded-md"
+                    className="md:w-1/3 w-full px-4 py-2 border rounded-md"
                     onChange={handleCountryChange}
                   >
                     {countryData.map((country) => (
@@ -191,7 +191,7 @@ const Contact = () => {
                   <input
                     type="text"
                     {...register("areaCode", { required: true })}
-                    className="w-1/4 px-4 py-2 border rounded-md bg-gray-100"
+                    className="md:w-1/4 w-full px-4 py-2 border rounded-md bg-gray-100"
                     readOnly
                     value={selectedCountry.dialCode}
                   />
@@ -200,7 +200,7 @@ const Contact = () => {
                     {...register("phone", {
                       required: "Please enter your phone number",
                     })}
-                    className="w-1/2 px-4 py-2 border rounded-md"
+                    className="md:w-1/2 w-full px-4 py-2 border rounded-md"
                     placeholder="1234567890"
                   />
                 </div>

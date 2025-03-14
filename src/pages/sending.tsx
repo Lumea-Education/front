@@ -21,84 +21,77 @@ export default function Sending() {
       }
 
       const { data } = state;
-      const fileFields = ["resume", "coverLetter"];
+      const fileFields = ["resume", "coverLetter", "image"];
       const files: { [key: string]: File } = {};
       const jsonData: { [key: string]: string | null } = {};
 
+      // JSON 데이터와 파일을 분리
       Object.keys(data).forEach((key) => {
-        if (
-          fileFields.includes(key) &&
-          data[key] instanceof FileList &&
-          data[key].length > 0
-        ) {
-          files[key] = data[key][0]; // ✅ 첫 번째 파일만 저장
+        if (fileFields.includes(key) && data[key] instanceof FileList) {
+          if (data[key].length > 0) {
+            files[key] = data[key][0]; // ✅ FileList → File 변환
+          }
         } else {
           jsonData[key] = data[key] as string | null;
         }
       });
 
+      jsonData.resumePath = "pending_upload";
+
       try {
-        // ✅ 적절한 API 엔드포인트 결정
-        let apiUrl = "";
+        // ✅ 1단계: JSON 데이터 업로드
+        console.log("🚀 Sending JSON Data:", JSON.stringify(jsonData, null, 2));
+        const response = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/api/careers`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json; charset=UTF-8",
+              Accept: "application/json",
+            },
+            body: JSON.stringify(jsonData),
+          }
+        );
 
-        // ✅ `position.tsx` 또는 `voluntary.tsx`에서 온 데이터 → 무조건 careers API 사용
-        if (jsonData.firstName && jsonData.lastName && jsonData.email) {
-          apiUrl = `${import.meta.env.VITE_BACKEND_URL}/api/careers`;
-        }
-
-        // ✅ `contact.tsx`에서 온 데이터 → 문의사항 API
-        else if (jsonData.email && jsonData.inquiryType) {
-          apiUrl = `${import.meta.env.VITE_BACKEND_URL}/api/contact`;
-        }
-
-        // ✅ `form.tsx`에서 온 데이터 → 대기자 명단 API
-        else if (
-          jsonData.email &&
-          !jsonData.phoneNumber &&
-          !jsonData.firstName
-        ) {
-          apiUrl = `${import.meta.env.VITE_BACKEND_URL}/api/waitlist`;
-        }
-
-        // ❌ 위 조건에 해당하지 않으면 /retry로 이동
-        if (!apiUrl) {
-          console.log("❌ No matching API endpoint, redirecting to /retry");
+        if (!response.ok) {
+          let errorMessage = "";
+          try {
+            errorMessage = await response.json();
+          } catch {
+            errorMessage = await response.text();
+          }
+          console.error(
+            `❌ JSON Upload Failed ${response.status}:`,
+            errorMessage
+          );
           navigate("/retry");
           return;
         }
-
-        // ✅ JSON 데이터 업로드
-        console.log("🚀 Sending JSON Data:", JSON.stringify(jsonData, null, 2));
-        const response = await fetch(apiUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(jsonData), // ✅ jsonData 자체를 전송
-        });
 
         const jsonResult = await response.json();
         console.log("✅ JSON Response:", jsonResult);
 
-        if (!response.ok) {
-          console.log("❌ JSON Data upload failed:", jsonResult);
+        if (!jsonResult.applicationId) {
+          console.error("❌ No application ID received, redirecting to /retry");
           navigate("/retry");
           return;
         }
 
-        // ✅ 파일 업로드 진행 (resume & coverLetter 존재 시)
-        if (Object.keys(files).length > 0 && jsonResult.applicationId) {
-          const formDataToSend = new FormData();
+        // ✅ 2단계: 파일 업로드 (resume, coverLetter, image 존재 시)
+        if (Object.keys(files).length > 0) {
+          const formData = new FormData();
           Object.keys(files).forEach((key) => {
-            formDataToSend.append(key, files[key]);
+            formData.append(key, files[key]);
           });
 
-          console.log("🔍 Sending Files:", [...formDataToSend.entries()]);
+          console.log("🔍 Sending Files:", [...formData.entries()]);
           const fileResponse = await fetch(
             `${import.meta.env.VITE_BACKEND_URL}/api/careers/upload/${
               jsonResult.applicationId
             }`,
             {
               method: "POST",
-              body: formDataToSend,
+              body: formData,
             }
           );
 
@@ -106,7 +99,10 @@ export default function Sending() {
           console.log("✅ File Upload Response:", fileUploadResult);
 
           if (!fileResponse.ok) {
-            console.log("❌ File Upload Failed:", fileUploadResult);
+            console.error(
+              `❌ File Upload Failed ${fileResponse.status}:`,
+              fileUploadResult
+            );
             navigate("/retry");
             return;
           }

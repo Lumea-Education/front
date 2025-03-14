@@ -56,6 +56,8 @@ export default function Voluntary() {
 
   const visaSponsorship = watch("visaSponsorship", "Please choose");
   const referral = watch("referral", "Please choose");
+  const resumeFile = watch("resume");
+  console.log("✅ Debugging Resume File:", resumeFile);
 
   useEffect(() => {
     if (visaSponsorship !== "Please choose") {

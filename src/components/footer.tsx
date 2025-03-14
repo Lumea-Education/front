@@ -16,8 +16,12 @@ export default function Footer() {
           #KeepLearning
         </p>
         <div className="my-16 grid grid-cols-3 max-w-3xs w-fit mx-0 space-x-32 text-[#f7f6f6]">
-          <button className="hover:cursor-pointer">FAQ</button>
-          <button className="hover:cursor-pointer">Blog</button>
+          <Link to="/faq">
+            <button className="hover:cursor-pointer">FAQ</button>
+          </Link>
+          <Link to="/blog">
+            <button className="hover:cursor-pointer">Blog</button>
+          </Link>
           <Link to="/contact">
             <button className="hover:cursor-pointer">Contact</button>
           </Link>

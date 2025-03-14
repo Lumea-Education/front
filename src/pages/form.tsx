@@ -21,19 +21,26 @@ export default function Form() {
   };
 
   return (
-    <div className="md:my-48 my-10 text-center md:space-y-48 space-y-10 px-6 md:px-0">
-      <h1 className="md:text-6xl text-3xl text-primary-submit">
-        Thank you for choosing us!
-      </h1>
+    <div className="md:my-48 my-10 text-center md:space-y-24 space-y-16 px-6 md:px-0">
+      <div className="md:space-y-10 space-y-5">
+        <h1 className="md:text-6xl text-3xl text-primary-submit">
+          Thank you for choosing us!
+        </h1>
+        <p className="text-xl text-black">
+          We are expecting to come by June 2025! We will notify you via email!
+        </p>
+      </div>
 
       <div className="bg-white p-8 rounded-2xl shadow-lg md:w-96 mx-auto">
         {submitted ? (
           <p className="text-xl text-green-500">
-            Thank you for your pre-order!
+            We will get back to you as soon as possible!
           </p>
         ) : (
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-800">Waitlist</h2>
+            <h2 className="text-xl font-bold text-gray-800">
+              Stay tuned for Exclusive Access
+            </h2>
             <input
               type="text"
               placeholder="Your Name"

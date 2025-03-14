@@ -59,6 +59,8 @@ export default function Position() {
 
   const visaSponsorship = watch("visaSponsorship", "Please choose");
   const referral = watch("referral", "Please choose");
+  const resumeFile = watch("resume");
+  console.log("✅ Debugging Resume File:", resumeFile);
 
   // Position-specific additional input fields
   const isDeveloperOrEngineer =

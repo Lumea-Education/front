@@ -11,6 +11,8 @@ import Contact from "./pages/contact";
 import Sending from "./pages/sending";
 import Received from "./pages/received";
 import Retry from "./pages/retry";
+import FAQ from "./pages/faq";
+import Blog from "./pages/blog";
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
         <Route path="/retry" element={<Retry />} />
         <Route path="/demo" element={<Demo />} />
         <Route path="/form" element={<Form />} />
+        <Route path="/faq" element={<FAQ />} />
+        <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </>

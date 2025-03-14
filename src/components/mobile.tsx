@@ -16,7 +16,7 @@ export default function Mobile() {
   };
 
   const isCareersPage = location.pathname === "/careers";
-  const isDemoPage = location.pathname === "/demo";
+  const isDemoPage = location.pathname === "/demo" || "form";
   const isContactPage = location.pathname === "/contact";
 
   return (
@@ -78,7 +78,7 @@ export default function Mobile() {
                 : "-translate-x-full delay-[200ms]"
             }`}
           >
-            <Link to="/demo" onClick={closeMenu}>
+            <Link to="/form" onClick={closeMenu}>
               <button className="p-2 rounded-2xl bg-primary-button text-white">
                 demo
               </button>

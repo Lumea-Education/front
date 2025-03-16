@@ -15,9 +15,33 @@ export default function Form() {
     formState: { errors },
   } = useForm<PreOrderForm>();
 
-  const onSubmit = (data: PreOrderForm) => {
-    console.log("Pre-order submitted:", data);
-    setSubmitted(true);
+  const onSubmit = async (data: PreOrderForm) => {
+    try {
+      const formData = new FormData();
+      formData.append("name", data.name);
+      formData.append("email", data.email);
+      formData.append("phone", data.phone);
+
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/waitlist`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Pre-order submission failed");
+      }
+
+      const responseData = await response.json();
+      console.log(responseData);
+
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Error submitting pre-order:", error);
+      alert("There was an error submitting your pre-order.");
+    }
   };
 
   return (

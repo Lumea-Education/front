@@ -2,8 +2,6 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import type { Position } from "../types/types";
-
-// Import volunteer position data
 import positionData from "../data/volunteer-positions.json";
 
 interface FormData {
@@ -56,8 +54,6 @@ export default function Voluntary() {
 
   const visaSponsorship = watch("visaSponsorship", "Please choose");
   const referral = watch("referral", "Please choose");
-  const resumeFile = watch("resume");
-  console.log("✅ Debugging Resume File:", resumeFile);
 
   useEffect(() => {
     if (visaSponsorship !== "Please choose") {
@@ -83,14 +79,54 @@ export default function Voluntary() {
     }
   };
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = async (data: FormData) => {
     if (!data.resume || !data.resume.length) {
       alert("Resume is required.");
       return;
     }
 
-    console.log("Submitting application:", data);
-    navigate("/sending", { state: { data } });
+    try {
+      const formData = new FormData();
+      formData.append("firstName", data.firstName);
+      formData.append("lastName", data.lastName);
+      formData.append("email", data.email);
+      formData.append("phoneNumber", data.phoneNumber);
+      formData.append("resume", data.resume[0]);
+      if (data.coverLetter) formData.append("coverLetter", data.coverLetter[0]);
+      if (data.linkedIn) formData.append("linkedIn", data.linkedIn);
+      if (data.github) formData.append("github", data.github);
+      if (data.portfolio) formData.append("portfolio", data.portfolio);
+      formData.append("workAuthorization", data.workAuthorization);
+      formData.append("visaSponsorship", data.visaSponsorship);
+      formData.append("referral", data.referral);
+      if (data.referralName) formData.append("referralName", data.referralName);
+      formData.append("school", data.school);
+      formData.append("degree", data.degree);
+      formData.append(
+        "contactPreferences",
+        JSON.stringify(data.contactPreferences)
+      );
+
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/volunteer`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Application submission failed");
+      }
+
+      const responseData = await response.json();
+      console.log(responseData);
+
+      navigate("/sending", { state: { data } });
+    } catch (error) {
+      console.error("Error submitting application:", error);
+      alert("There was an error submitting your application.");
+    }
   };
 
   return (

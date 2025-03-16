@@ -81,14 +81,36 @@ const Contact = () => {
     "Other",
   ];
 
-  const onSubmit = (data: Form) => {
-    console.log(data);
-    setIsSubmitted(true);
-    reset();
+  const onSubmit = async (data: Form) => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/contact`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
 
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 3000);
+      if (!response.ok) {
+        throw new Error("API 요청 실패");
+      }
+
+      const responseData = await response.json();
+
+      console.log(responseData);
+
+      setIsSubmitted(true);
+      reset();
+
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 3000);
+    } catch (error) {
+      console.error("에러 발생:", error);
+    }
   };
 
   const handleSupportOption = (type: string) => {

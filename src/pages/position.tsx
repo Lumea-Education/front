@@ -2,7 +2,6 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import type { Position } from "../types/types";
-
 import positionData from "../data/positions.json";
 
 interface FormData {
@@ -57,8 +56,6 @@ export default function Position() {
 
   const visaSponsorship = watch("visaSponsorship", "Please choose");
   const referral = watch("referral", "Please choose");
-  const resumeFile = watch("resume");
-  console.log("✅ Debugging Resume File:", resumeFile);
 
   const isDeveloperOrEngineer =
     formattedPositionName.toLowerCase().includes("developer") ||
@@ -98,20 +95,40 @@ export default function Position() {
     }
   };
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = async (data: FormData) => {
     if (!data.resume || !data.resume.length) {
       alert("Resume is required.");
       return;
     }
 
-    const formData = new FormData();
-    Object.keys(data).forEach((key) => {
-      if (data[key as keyof FormData] !== undefined) {
-        formData.append(key, data[key as keyof FormData] as string | Blob);
-      }
-    });
+    try {
+      const formData = new FormData();
+      Object.keys(data).forEach((key) => {
+        if (data[key as keyof FormData] !== undefined) {
+          formData.append(key, data[key as keyof FormData] as string | Blob);
+        }
+      });
 
-    navigate("/sending", { state: { data } });
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/careers`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Application submission failed");
+      }
+
+      const responseData = await response.json();
+      console.log(responseData);
+
+      navigate("/sending", { state: { data } });
+    } catch (error) {
+      console.error("Error submitting application:", error);
+      alert("There was an error submitting your application.");
+    }
   };
 
   return (

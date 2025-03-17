@@ -8,7 +8,11 @@ interface FormData {
   firstName: string;
   lastName: string;
   email: string;
-  phoneNumber: string;
+  phone: {
+    countryCode: string;
+    areaCode: string;
+    number: string;
+  };
   resume: FileList;
   coverLetter?: FileList;
   linkedIn?: string;
@@ -90,7 +94,11 @@ export default function Voluntary() {
       formData.append("firstName", data.firstName);
       formData.append("lastName", data.lastName);
       formData.append("email", data.email);
-      formData.append("phoneNumber", data.phoneNumber);
+
+      formData.append("countryCode", data.phone.countryCode);
+      formData.append("areaCode", data.phone.areaCode);
+      formData.append("number", data.phone.number);
+
       formData.append("resume", data.resume[0]);
       if (data.coverLetter) formData.append("coverLetter", data.coverLetter[0]);
       if (data.linkedIn) formData.append("linkedIn", data.linkedIn);
@@ -200,6 +208,33 @@ export default function Voluntary() {
               {...register("email", { required: "Required" })}
               className="border w-full p-2 rounded mt-1"
             />
+          </label>
+
+          <label className="block">
+            Phone:
+            <div className="md:flex md:space-x-2 mt-1 space-y-2">
+              <input
+                {...register("phone.countryCode", {
+                  required: "Country code is required",
+                })}
+                placeholder="Country Code (e.g., +1)"
+                className="border w-full p-2 rounded"
+              />
+              <input
+                {...register("phone.areaCode", {
+                  required: "Area code is required",
+                })}
+                placeholder="Area Code (e.g., 212)"
+                className="border w-full p-2 rounded"
+              />
+              <input
+                {...register("phone.number", {
+                  required: "Phone number is required",
+                })}
+                placeholder="Phone Number (e.g., 5551234)"
+                className="border w-full p-2 rounded"
+              />
+            </div>
           </label>
 
           <label className="block">
